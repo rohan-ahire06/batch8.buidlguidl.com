@@ -25,18 +25,32 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
 
-  await deploy("BatchRegistry", {
+  //Deploying batchRegistry contract
+  const batchRegistryDeployment = await deploy("BatchRegistry", {
     from: deployer,
-    // Contract constructor arguments
     args: [deployer, BATCH_NUMBER],
     log: true,
-    // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
-    // automatically mining the contract deployment transaction. There is no effect on live networks.
     autoMine: true,
   });
 
+  //gatting the address of batchRegistry contract
+  const batchRegistryAddress = batchRegistryDeployment.address;
+  console.log("\nBatchRegistry deployed to:", batchRegistryAddress);
+
+  //Deploying the CheckIn contract
+  const checkInDeployment = await deploy("CheckIn", {
+    from: deployer,
+    args: [batchRegistryAddress], // Pass BatchRegistry address to CheckIn
+    log: true,
+    autoMine: true,
+  });
+
+  const checkInAddress = checkInDeployment.address;
+  console.log("CheckIn deployed to:", checkInAddress);
+
   // Get the deployed contract to interact with it after deploying.
   const batchRegistry = await hre.ethers.getContract<Contract>("BatchRegistry", deployer);
+  await hre.ethers.getContract<Contract>("CheckIn", deployer);
   console.log("\nBatchRegistry deployed to:", await batchRegistry.getAddress());
   console.log("Remember to update the allow list!\n");
 
@@ -49,4 +63,4 @@ export default deployYourContract;
 
 // Tags are useful if you have multiple deploy files and only want to run one of them.
 // e.g. yarn deploy --tags YourContract
-deployYourContract.tags = ["BatchRegistry"];
+deployYourContract.tags = ["BatchRegistry", "CheckIn"];
