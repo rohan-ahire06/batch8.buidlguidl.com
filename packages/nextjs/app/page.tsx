@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import CheckedInCounter from "../components/CheckedInCounter";
 import type { NextPage } from "next";
