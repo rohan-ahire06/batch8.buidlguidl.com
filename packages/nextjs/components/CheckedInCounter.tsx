@@ -27,7 +27,7 @@ const CheckInCount = () => {
 
   return (
     <>
-      <span className="font-bold">Checked in builders count: {result}</span>
+      <span className="font-bold text-xl">Checked in builders count: {result}</span>
       {feedback && <p>{feedback}</p>}
     </>
   );
