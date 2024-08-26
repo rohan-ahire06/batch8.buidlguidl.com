@@ -1,8 +1,6 @@
-// import Link from "next/link";
 import CheckedInCounter from "../components/CheckedInCounter";
 import type { NextPage } from "next";
-
-// import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { Address } from "~~/components/scaffold-eth";
 
 const Home: NextPage = () => {
   return (
@@ -14,31 +12,30 @@ const Home: NextPage = () => {
           </p>
         </div>
 
-        {/* <div className="flex-grow bg-base-300 w-full px-8 py-12">
-          <div className="flex justify-center items-center gap-12 flex-col sm:flex-row">
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <BugAntIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Tinker with your smart contract using the{" "}
-                <Link href="/debug" passHref className="link">
-                  Debug Contracts
-                </Link>{" "}
-                tab.
-              </p>
-            </div>
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <MagnifyingGlassIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Explore your local transactions with the{" "}
-                <Link href="/blockexplorer" passHref className="link">
-                  Block Explorer
-                </Link>{" "}
-                tab.
-              </p>
+        <div className=" px-[100px] w-full">
+          <div className="bg-base-300 flex md:flex-row flex-col items-center rounded-[10px] p-10">
+            <div></div>
+
+            <div className=" border-l-2 border-white flex flex-col justify-center items-center pl-[40px]">
+              <p className=" text-lg font-bold mt-0">Previous Bidder</p>
+
+              <div className=" flex flex-col items-center gap-y-3">
+                <div className="bg-primary-content text-secondary px-3 py-2 rounded-[10px]">
+                  <Address address="0x4a9A95B6fe3b9416f0c78A8735Aa075c75AF46a4" />
+                </div>
+                <div className="bg-primary-content text-secondary px-3 py-2 rounded-[10px]">
+                  <Address address="0x4a9A95B6fe3b9416f0c78A8735Aa075c75AF46a4" />
+                </div>
+                <div className="bg-primary-content text-secondary px-3 py-2 rounded-[10px]">
+                  <Address address="0x4a9A95B6fe3b9416f0c78A8735Aa075c75AF46a4" />
+                </div>
+                <div className="bg-primary-content text-secondary px-3 py-2 rounded-[10px]">
+                  <Address address="0x4a9A95B6fe3b9416f0c78A8735Aa075c75AF46a4" />
+                </div>
+              </div>
             </div>
           </div>
-        </div> */}
-        <div></div>
+        </div>
       </div>
     </>
   );
